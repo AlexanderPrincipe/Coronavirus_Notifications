@@ -11,7 +11,7 @@ git clone https://github.com/AlexanderPrincipe/Coronavirus_Notifications.git
 2. Ir a la ruta del programa
 
 ```
-cd CORONAVURUSNOTIFICATION/
+cd Coronavirus_Notificacions/
 ```
 
 3. Instalar módulos
