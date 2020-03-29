@@ -18,17 +18,17 @@ def extract():
   casosint = int((soup.find("div", { "class": "maincounter-number" }).get_text().strip()).replace(',',""))
   
   if(casos == prev_casos):
-      print('['+ time.strftime('%l:%M:%S %p on %b %d, %Y') + ' ] SIN CAMBIOS EN EL NÚMERO DE CASOS (' + casos + ')')
+      print('['+ time.strftime('%l:%M:%S %p on %b %d, %Y') + '] SIN CAMBIOS EN EL NÚMERO DE CASOS (' + casos + ')')
 
   else:
     notifyMe('Total número de casos de CORONAVIRUS', casos)
     if(prev_casos != "0"):
       prev_casosint = int(prev_casos.replace(',', ""))
-      print('[' + time.strftime('%l:%M:%S %p on %b %d, %Y') + ' ] casos ROSE FROM ' + prev_casos + ' TO ' + casos)
+      print('[' + time.strftime('%l:%M:%S %p on %b %d, %Y') + ' ] aumentó de ' + prev_casos + ' a ' + casos)
       aumento = str(casosint - prev_casosint)
       notifyMe('El total de número de casos aumentó en', aumento)
 
-      aumentos.append[aumento]
+      aumentos.append(aumento)
       print(aumentos)
     prev_casos = casos
 
