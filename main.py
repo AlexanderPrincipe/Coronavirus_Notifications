@@ -6,13 +6,10 @@ from plyer import notification
 import time
 
 prev_casos = "0"
-aumentos = ['13', '2599', '39', '161', '370', '2', '54', '15', '173', '25', '69', '2262', '3', '1', '94', '19', '828', '53', '1105', '99', '698', '114', '12', '7', '3', '1', '55', '191', '22', '105', '26']
-casosArray = []
-
-
+aumentos = [358, 32, 5, 168, 42, 7, 4, 16, 7, 12, 11, 1, 6, 40, 42, 91, 59, 340, 1]
+casosArray = [721019, 721051, 721056, 721224, 721266, 721273, 721277, 721293, 721300, 721312, 721323, 721324, 721330, 721370, 721412, 721503, 721562, 721902, 721903, 721946, 721951, 721956, 740239, 740685, 740695, 740737, 740743, 741774, 741777, 741907, 741908, 741914, 742283, 742339, 742428, 742444, 742462, 742506, 742531, 742556]
 def extract():
   global prev_casos
-  global aumentos
   # Casos confirmados de Coronavirus en Perú
   # res = requests.get('https://www.worldometers.info/coronavirus/country/peru').text
 
@@ -25,20 +22,18 @@ def extract():
   
   if(casos == prev_casos):
       print('['+ time.strftime('%l:%M:%S %p on %b %d, %Y') + '] SIN CAMBIOS EN EL NÚMERO DE CASOS (' + casos + ')')
-
-   
-
   else:
     notifyMe('Total número de casos de CORONAVIRUS', casos)
+
     if(prev_casos != "0"):
       prev_casosint = int(prev_casos.replace(',', ""))
-      print('[' + time.strftime('%l:%M:%S %p on %b %d, %Y') + ' ] aumentó de ' + prev_casos + ' a ' + casos)
-      aumento = str(casosint - prev_casosint)
-      caso = prev_casos
-      notifyMe('El total de número de casos aumentó en', aumento)
+      print('[' + time.strftime('%l:%M:%S %p on %b %d, %Y') + '] aumentó de ' + prev_casos + ' a ' + casos)
+      aumentostr = str(casosint - prev_casosint)
+      aumentoint = (casosint - prev_casosint)
+      print('El total de número de casos aumentó en', aumentostr)
 
-      aumentos.append(aumento)
-      casosArray.append(caso)
+      aumentos.append(aumentoint)
+      casosArray.append(casosint)
       print(aumentos)
       print(casosArray)
       
@@ -46,9 +41,15 @@ def extract():
       #plt.show()
     
     prev_casos = casos
+    
+    if(casosint >= 1000000):
+      notifyMe('Superamos el millón de infectados con Coronavirus!!!!!', casosint)
+
 
 def notifyMe(title, message):
   notification.notify(title=title, message=message, timeout=6)
+
+
 
 while True:
   extract()
