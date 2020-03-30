@@ -7,7 +7,8 @@ import time
 
 prev_casos = "0"
 aumentos = [358, 32, 5, 168, 42, 7, 4, 16, 7, 12, 11, 1, 6, 40, 42, 91, 59, 340, 1]
-casosArray = [721019, 721051, 721056, 721224, 721266, 721273, 721277, 721293, 721300, 721312, 721323, 721324, 721330, 721370, 721412, 721503, 721562, 721902, 721903, 721946, 721951, 721956, 740239, 740685, 740695, 740737, 740743, 741774, 741777, 741907, 741908, 741914, 742283, 742339, 742428, 742444, 742462, 742506, 742531, 742556]
+casosArray = [721019, 721051, 721056, 721224, 721266, 721273, 721277, 721293, 721300, 721312, 721323, 721324, 721330, 721370, 721412, 721503, 721562, 721902, 721903, 721946, 721951, 721956, 740239, 740685, 740695, 740737, 740743, 741774, 741777, 741907, 741908, 741914, 742283, 742339, 742428, 742444, 742462, 742506, 742531, 742556, 743081, 743147, 743179, 743190, 743255, 743286, 743369, 743370, 743402, 743437, 746056, 746062, 746107]
+
 def extract():
   global prev_casos
   # Casos confirmados de Coronavirus en Perú
@@ -36,9 +37,7 @@ def extract():
       casosArray.append(casosint)
       print(aumentos)
       print(casosArray)
-      
-      #plt.plot(aumentos, range(len(aumentos)))
-      #plt.show()
+    
     
     prev_casos = casos
     
@@ -46,10 +45,18 @@ def extract():
       notifyMe('Superamos el millón de infectados con Coronavirus!!!!!', casosint)
 
 
+def retornarCasosArray():
+  import matplotlib.pyplot as plt
+  ejex = casosArray
+  ejey = range(len(ejex))
+  plt.plot(ejey, ejex)
+  plt.ylabel('Número de infectados')
+  plt.show()
+  #print('Imprimiendo los casos totales', casosArray)
+
+
 def notifyMe(title, message):
   notification.notify(title=title, message=message, timeout=6)
-
-
 
 while True:
   extract()
