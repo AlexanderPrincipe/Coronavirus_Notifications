@@ -27,4 +27,5 @@ pip install plyer
 python main.py
 ```
 
+![Captura de pantalla de 2020-03-30 15-09-52](https://user-images.githubusercontent.com/31213239/77957100-934b4300-7298-11ea-89bb-38ab401f4aa8.png)
 
