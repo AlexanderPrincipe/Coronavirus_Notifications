@@ -44,17 +44,6 @@ def extract():
     if(casosint >= 1000000):
       notifyMe('Superamos el millón de infectados con Coronavirus!!!!!', casosint)
 
-
-def retornarCasosArray():
-  import matplotlib.pyplot as plt
-  ejex = casosArray
-  ejey = range(len(ejex))
-  plt.plot(ejey, ejex)
-  plt.ylabel('Número de infectados')
-  plt.show()
-  #print('Imprimiendo los casos totales', casosArray)
-
-
 def notifyMe(title, message):
   notification.notify(title=title, message=message, timeout=6)
 
